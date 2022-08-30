@@ -1,115 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import styled from '@emotion/styled'
+import TextField from '@mui/material/TextField';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import TopBar from '../components/TopBar';
-import SideBar from '../components/SideBar';
 import { Link, useNavigate } from "react-router-dom";
 
-const StyledBox = styled(Box)`
-`
-
-const BodyContainer = styled.div`
-`
-const Card = styled.div`
-background: #FFFFFF;
-border: 11px solid rgba(129, 22, 22, 0.03);
-box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.32);
-border-radius: 2px;
-box-sizing: border-box;
-align-items: flex-start;
-padding: 20px 24px 15px 24px;
-height: 133px;
-width: 336px;
-margin: 80px 0 0 10%;
-@media only screen and (max-width: 860px) {
-  width: 80%;
-}
-`
-const CardSvg = styled.svg`
-width: 18px;
-margin-right: 10px;
-`
-const CardTitle = styled.h3`
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 24px;
-letter-spacing: -0.005em;
-opacity: 0.8;
-margin-top: 0;
-text-align: start;
-display: flex;
-align-items: center;
-`
-const DetailsContainer = styled.div`
- display: flex;
- justify-content: space-between;
- align-items: center;
-`
-const CardDetails = styled.p`
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 16px;
-letter-spacing: -0.02em;
-`
- 
-const AgentSvg = styled.svg`
-widht: 18px;
-margin-right: 10px;
-`
-const Agent = styled.p`
-text-align: start;
-display: flex;
-align-items: center;
-margin-top: 0;
-font-weight: 500;
-`
-const CallAgent = styled.p`
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 16px;
-letter-spacing: -0.02em;
-text-align: start;
-margin-top: 22px;
-margin-bottom: 0;
-font-size: 0.9rem;
-color: #000;
-`
-const CardBottomContainer = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-z-index: 1001;
-width: 336px;
-margin-left: -35px;
-cursor: pointer;
-border-top: 0.5px solid  rgba(0, 0, 0, 0.3);
-:hover{
-  border: 0.5px solid blue;
-}
-@media only screen and (max-width: 860px) {
-  width: calc(100% + 70px);
-}
-`
-const ViewAll = styled.p`
-margin-left: 20px;
-font-size: 13px;
-Font-family: Work Sans;
-color: #000;
-`
-const BottomSvg = styled.svg`
-width: 18px;
-margin-right: 15px;
-`
 const BoxContainer = styled(Box)`
 position: absolute;
 z-index: 10001;
@@ -117,6 +15,7 @@ width: 100%;
 height: 100%;
 background: rgba(255, 255, 255, 0.1);
 background-filter: blur(10px);
+margin: -280px 0 0 -300px;
 `
 const StyledContainer = styled.div`
 border: 0.5px solid #C4C4C4;
@@ -144,7 +43,7 @@ cursor: pointer;
 color: #fff;
 margin-right: 5%;
 `
-const AgentInfo = styled.p`
+const AgentInfo = styled.h3`
 text-align: start;
 width: 60%;
 padding-bottom: 10px;
@@ -219,37 +118,33 @@ border: none;
 outline: none;
 cursor: ponter;
 `
+const CloseBtnContainer = styled.div`
+
+`
 
 
-function HomePage() {
-  const [agentForm, setAgentForm] = useState(false);
-  
-  const toggle = () => {
-    setAgentForm(!agentForm);
-  }
- const close = () => {
-  setAgentForm(false);
- }
+function EditAgent(props: {editAgent: any, setEditAgent: any}) {
 
- let navigate = useNavigate();
- const handleView = () => {
-  navigate('./callhistory')
- }
+    let editAgent = props.editAgent;
+    let setEditAgent = props.setEditAgent;
+
+    const handleEdit = () => {
+         setEditAgent(!editAgent);
+    }
 
   return (
-       <>
-       <TopBar />
-       { agentForm && (
-        <BoxContainer>
+    <BoxContainer>
         <Grid container >
         <Grid item lg={3} md={3} sm={2} xs={0}></Grid>
         <Grid item lg={7} md={7} sm={9} xs={12}>
         <FormHeaderContainer>
-        <Heading>NEW AGENT</Heading>
-        <CloseIcon onClick={close} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M24 9.4L22.6 8L16 14.6L9.4 8L8 9.4l6.6 6.6L8 22.6L9.4 24l6.6-6.6l6.6 6.6l1.4-1.4l-6.6-6.6L24 9.4z"/></CloseIcon>
+        <Heading>Edit</Heading>
+        <CloseBtnContainer onClick={handleEdit}>
+        <CloseIcon  xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M24 9.4L22.6 8L16 14.6L9.4 8L8 9.4l6.6 6.6L8 22.6L9.4 24l6.6-6.6l6.6 6.6l1.4-1.4l-6.6-6.6L24 9.4z"/></CloseIcon>
+        </CloseBtnContainer>
         </FormHeaderContainer>
         <StyledContainer>
-        <AgentInfo>Agent Information</AgentInfo>
+        <AgentInfo>Personal Details</AgentInfo>
         <Form>
         <AgentImgContainer>
        {/* <AgentImage src='' />*/}
@@ -333,43 +228,10 @@ function HomePage() {
         </Grid>
         </Grid>
         </BoxContainer>
-      )}
-       <StyledBox>
-        <Grid container>
-        <Grid item lg={2} md={2} sm={2} xs={3}>
-        <SideBar />
-         </Grid>
-         <Grid item  lg={10} md={10} sm={10} xs={9}>
-         <BodyContainer>
-          <Grid container>
-          <Grid item  lg={6} md={6} sm={6} xs={12}>
-           <Card>
-           <CardTitle><CardSvg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="currentColor" d="M5 1a.5.5 0 0 1 .5.5V2h2v-.5a.5.5 0 0 1 1 0V2h2v-.5a.5.5 0 0 1 1 0V2A1.5 1.5 0 0 1 13 3.5v2.536a2.549 2.549 0 0 0-1.37.712L10.289 8.09A.498.498 0 0 0 10 8H6a.5.5 0 0 0 0 1h3.379l-2.037 2.036c-.125.125-.24.259-.346.4A.5.5 0 0 0 6.5 11H6a.5.5 0 0 0 0 1h.5a.498.498 0 0 0 .157-.025a3.778 3.778 0 0 0-.308.816l-.303 1.211a1.59 1.59 0 0 0 .07.998H4.5A1.5 1.5 0 0 1 3 13.5v-10A1.5 1.5 0 0 1 4.5 2v-.5A.5.5 0 0 1 5 1Zm.5 4.5A.5.5 0 0 0 6 6h4a.5.5 0 0 0 0-1H6a.5.5 0 0 0-.5.5Zm6.838 1.955a1.56 1.56 0 0 1 2.207 2.207l-4.289 4.288a2.777 2.777 0 0 1-1.29.731l-1.211.303a.61.61 0 0 1-.74-.74l.304-1.21c.122-.489.374-.935.73-1.29l4.289-4.289Z"/></CardSvg>Onboard</CardTitle>
-           <DetailsContainer>
-            <CardDetails>Register for new agent here</CardDetails>
-            <Fab color="inherit" onClick={toggle} size='small' aria-label="add" style={{background: "linear-gradient(180deg, #FF2525 0%, #432344 100%)", color: '#fff', width: '40px', height: '40px'}}>
-            <AddIcon />
-            </Fab>
-           </DetailsContainer>
-           </Card>
-          </Grid>
-          <Grid item  lg={6} md={6} sm={6} xs={12}>
-          <Card>
-            <Agent><AgentSvg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="currentColor" d="M678.3 642.4c24.2-13 51.9-20.4 81.4-20.4h.1c3 0 4.4-3.6 2.2-5.6a371.67 371.67 0 0 0-103.7-65.8c-.4-.2-.8-.3-1.2-.5C719.2 505 759.6 431.7 759.6 349c0-137-110.8-248-247.5-248S264.7 212 264.7 349c0 82.7 40.4 156 102.6 201.1c-.4.2-.8.3-1.2.5c-44.7 18.9-84.8 46-119.3 80.6a373.42 373.42 0 0 0-80.4 119.5A373.6 373.6 0 0 0 137 888.8a8 8 0 0 0 8 8.2h59.9c4.3 0 7.9-3.5 8-7.8c2-77.2 32.9-149.5 87.6-204.3C357 628.2 432.2 597 512.2 597c56.7 0 111.1 15.7 158 45.1a8.1 8.1 0 0 0 8.1.3zM512.2 521c-45.8 0-88.9-17.9-121.4-50.4A171.2 171.2 0 0 1 340.5 349c0-45.9 17.9-89.1 50.3-121.6S466.3 177 512.2 177s88.9 17.9 121.4 50.4A171.2 171.2 0 0 1 683.9 349c0 45.9-17.9 89.1-50.3 121.6C601.1 503.1 558 521 512.2 521zM880 759h-84v-84c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v84h-84c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h84v84c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-84h84c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8z"/></AgentSvg>Agent</Agent>
-           <CallAgent>20 call agents</CallAgent>
-           <CardBottomContainer onClick={handleView}>
-            <ViewAll>View All</ViewAll>
-            <BottomSvg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4.8 21.57L7.222 24L19.2 12L7.222 0L4.8 2.43L14.347 12z"/></BottomSvg>
-           </CardBottomContainer>
-           </Card>
-          </Grid>
-          </Grid>
-         </BodyContainer>
-         </Grid>
-        </Grid>
-    </StyledBox>
-    </>
   )
 }
 
-export default HomePage
+export default EditAgent
+
+
+

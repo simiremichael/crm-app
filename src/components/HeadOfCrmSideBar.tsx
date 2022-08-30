@@ -87,7 +87,7 @@ margin-right: 5px;
 `
 const Logout = styled.p`
 font-family: Montserrat;
-padding-top: 50px;
+padding-top: 10px;
 display: flex;
 align-items: center;
 justify-content: start;
@@ -96,7 +96,7 @@ font-weight: 700;
 font-size: 20px;
 line-height: 20px;
 letter-spacing: -0.005em;
-margin-top: calc(100% + 80px);
+margin-top: calc(100% + 40px);
 cursor: pointer;
 `
 const Links = styled(Link)`

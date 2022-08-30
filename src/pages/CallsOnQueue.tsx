@@ -49,7 +49,7 @@ function CallsOnQueue() {
 
     let navigate = useNavigate();
     const handleNavigate = () => {
-        navigate('/dashboard');
+        navigate('/agentdashboard');
     }
   return (
     <>

@@ -238,7 +238,7 @@ margin-top: -65px;
 
 function AgentDashboard() {
  
- const option = {
+  const option = {
     tooltip: {
       trigger: 'item'
     },
@@ -269,9 +269,9 @@ function AgentDashboard() {
           show: false
         },
         data: [
-          { value: 18, name: 'Missed Calls' },
-          { value: 82, name: 'All Calls' },
-        
+          { value: 20, name: 'Blocked' },
+          { value: 32, name: 'Abandon' },
+          { value: 52, name: 'All Calls' },
         ]
       }
     ]

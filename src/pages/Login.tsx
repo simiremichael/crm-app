@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import styled from '@emotion/styled'
@@ -12,7 +12,7 @@ height: 100vh;
 const Illustration = styled.div`
 width: 100%;
 height: 600px;
-background-image: url('../images/frame1.png');
+background-image: url('../images/Frame1.webp');
 background-size: 100% 100%;
 @media screen and (max-width: 760px) {
   height: 50vh;
@@ -78,14 +78,43 @@ margin: 0 10px 0 10px;
 background: linear-gradient(182.59deg, rgba(67, 35, 68, 0.9) -11.53%, #FFC03D 12.4%, #FF2525 50.56%, rgba(67, 35, 68, 0.66) 97.84%);
 border-radius: 50%;
 `
+const SelectContainer = styled.div`
+margin: 15px;
+`
+const SelectInput = styled.input`
+display: none;
+:checked + Label {
+background-color: #FF2525;
+color: #ffffff;
+}
+`
+ const SelectLabel = styled.label`
+ border: 0.5px solid #FF2525;
+ padding: 8px 15px;
+ margin: 10px;
+ cursor: pointer;
+ font-weight: 600;
+ border-radius: 5px;
+ `
 
 function Login() {
 
+const [select, setSelect] = useState({admin: '', agent: '', hcrm: '' })
   let navigate = useNavigate();
+
   const handleSubmit = () => {
-    navigate('./dashboard')
+    if (select.admin === 'admin') {
+      navigate('/admindashboard');
+    } else if(select.agent === 'agent') {
+      navigate('/agentdashboard')
+    } else if(select.hcrm === 'hcrm') {
+      navigate('/hcrmdashboard')
+    }else {
+      navigate('/')
+    }
   }
   
+  console.log(select)
   return (
     <StyledBox>
        <Grid container>
@@ -101,6 +130,14 @@ function Login() {
          <FormContainer>
             <Form onSubmit={handleSubmit}>
             <FormHeader>LOGIN</FormHeader>
+            <SelectContainer>
+             <SelectInput name='select' id='select' type='radio' value='admin' onChange={(e) => setSelect({...select, admin: e.target.value})} />
+             <SelectLabel htmlFor='select'>Admin</SelectLabel>
+             <SelectInput name='select' id='select1' type='radio' value='agent' onChange={(e) => setSelect({...select, agent: e.target.value})} />
+             <SelectLabel htmlFor='select1'>Agent</SelectLabel>
+             <SelectInput name='select' id='select2' type='radio' value='hcrm' onChange={(e) => setSelect({...select, hcrm: e.target.value})} />
+             <SelectLabel htmlFor='select2'>Hcrm</SelectLabel>
+             </SelectContainer>
                 <StyledTextField id="outlined-basic" type='email' size='small'  />
                 <StyledTextField id="outlined-basic" type='password' size='small' />
                 <InnerFormContainer>
@@ -120,6 +157,7 @@ function Login() {
 }
 
 export default Login
+
 /*
 <Grid item lg={8} md={8} sm={8} xs={12}>
         <Linear>

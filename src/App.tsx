@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 //import { Counter } from './features/counter/Counter';
 import './App.css';
 import Login from './pages/Login';
@@ -7,7 +6,6 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import HomePage from './pages/HomePage';
 import Table from './pages/Table';
 import AgentDashboard from './pages/AgentDashboard';
 import Logs from './pages/Logs';
@@ -32,11 +30,29 @@ import UserProfile from './pages/UserProfile';
 import HcrmMissedCalls from './pages/HcrmMissedCalls';
 import Analytics from './pages/Analytics';
 import LiveCall from './pages/LiveCall';
+import AdminDashboard from './pages/AdminDashboard';
+import CallDetails from './pages/CallDetails';
+import Employees from './pages/Employees';
+import PersonalDetails from './pages/PersonalDetails';
+import EditAgent from './components/EditAgent';
+import AdminReport from './pages/AdminReport';
+import CallFlow from './pages/CallFlow';
+import Calender from './pages/Calender';
 
         function App() {  
+          const [show, setShow] = useState(false);
+          const [edit, setEdit] = useState(false);
+          const [editAgent, setEditAgent] = useState(false);
   return (
     <div className="App">
      <Routes>
+     <Route path="/" element={<Login/>} />
+     <Route path="/calender" element={<Calender />} />
+     <Route path="/callflow" element={<CallFlow/>} />
+     <Route path="/employees/report" element={<AdminReport/>} />
+     <Route path="/editagent" element={<EditAgent editAgent={editAgent} setEditAgent={setEditAgent} />} />
+     <Route path="/employees/personaldetails" element={<PersonalDetails edit={edit} setEdit={setEdit} editAgent={editAgent} setEditAgent={setEditAgent} />} />
+     <Route path="/employees" element={<Employees edit={edit} setEdit={setEdit} editAgent={editAgent} setEditAgent={setEditAgent}  />} />
      <Route path="/hcrmdashboard/livecall" element={<LiveCall/>} />
      <Route path="/livecall:callId" element={<LiveCall />} />
      <Route path="/analytics" element={<Analytics/>} />
@@ -50,9 +66,9 @@ import LiveCall from './pages/LiveCall';
      <Route path="/hcrmreport" element={<HcrmReport/>} />
      <Route path="hcrmreport/activeagent" element={<ActiveAgent/>} />
       <Route path="/hcrmdashboard" element={<HeadOfCrmDashboard/>} />
-      <Route path="/dashboard" element={<AgentDashboard/>} />
-      <Route path="homepage" element={<HomePage />} />
-      <Route path="homepage/callhistory" element={<Table />} />
+      <Route path="/agentdashboard" element={<AgentDashboard/>} />
+      <Route path="admindashboard" element={<AdminDashboard />} />
+      <Route path="admindashboard/callhistory" element={<Table show={show} setShow={setShow} />} />
       <Route path="/report/totalcalls" element={<TotalCalls />} />
       <Route path="/report" element={<Report />} />
       <Route path="/logs" element={<Logs/>} />

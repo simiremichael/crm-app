@@ -63,7 +63,7 @@ function HeadOfCrmTopBar() {
 
   let navigate = useNavigate();
     const handleNavigate = () => {
-        navigate('/hcrmdashboard');
+        navigate('/');
     }
 
   return (

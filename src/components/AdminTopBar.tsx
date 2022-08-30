@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import styled from '@emotion/styled';
+import { useNavigate } from "react-router-dom";
 
 
 const StyledBox = styled(Box)`
@@ -51,14 +52,21 @@ margin-right: 10px;
 fill: rgba(0, 0, 0, 0.7);
 `
 
-function TopBar() {
+function AdminTopBar() {
+
+  let navigate = useNavigate();
+  const handleNavigate = () => {
+      navigate('/');
+  }
+
+
   return (
     <StyledBox>
     <NavBar>
    <StyledGrid container>
        <Grid item lg={2} md={2} sm={2} xs={3}>
    <LeftNavContainer>
-       <Logo src="../images/logo.jpg" alt='logo' />
+       <Logo onClick={handleNavigate} src="../images/logo.jpg" alt='logo' />
    </LeftNavContainer>
    </Grid>
    <Grid item lg={10} md={10} sm={10} xs={9}>
@@ -75,4 +83,4 @@ function TopBar() {
   )
 }
 
-export default TopBar
+export default AdminTopBar

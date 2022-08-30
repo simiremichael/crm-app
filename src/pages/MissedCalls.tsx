@@ -50,7 +50,7 @@ function MissedCalls() {
 
     let navigate = useNavigate();
     const handleNavigate = () => {
-        navigate('/dashboard');
+        navigate('/agentdashboard');
     }
   return (
     <>

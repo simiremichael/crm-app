@@ -565,7 +565,7 @@ const handleNavigate3 = () => {
         <TextareaAutosize
       aria-label="minimum height"
       minRows={3}
-      placeholder="Current"
+      placeholder="Comment"
       style={{ borderRadius: 5, width: '98%', borderBlockColor:' #C4C4C4', outlineColor: 'royalblue' }}
     />
          </Grid>

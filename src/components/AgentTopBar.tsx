@@ -58,12 +58,12 @@ margin-right: 15px;
 `
 
 
-function TopBar() {
+function AgentTopBar() {
 
 
   let navigate = useNavigate();
     const handleNavigate = () => {
-        navigate('/dashboard');
+        navigate('/');
     }
 
   return (
@@ -91,4 +91,4 @@ function TopBar() {
   )
 }
 
-export default TopBar
+export default AgentTopBar

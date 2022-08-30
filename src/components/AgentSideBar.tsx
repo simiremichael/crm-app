@@ -24,20 +24,20 @@ font-family: Montserrat;
 padding-top: 50px;
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: start;
+padding-left: 10%;
 `
 const Log = styled.p`
+margin: 0;
 font-family: Montserrat;
+padding-top: 20px;
 display: flex;
 align-items: center;
-justify-content: center;;
+justify-content: start;
+padding-left: 10%;
 font-weight: 700;
 font-size: 20px;
-line-height: 20px;
-letter-spacing: -0.005em;
-cursor: pointer;
-padding-top: 10px;
-margin-left: -50px;
+
 `
 const LogSvg = styled.svg`
 width: 18px;
@@ -45,17 +45,15 @@ height: 18px;
 margin-right: 5px;
 `
 const Report = styled.p`
+margin: 0;
 font-family: Montserrat;
+padding-top: 20px;
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: start;
+padding-left: 10%;
 font-weight: 700;
 font-size: 20px;
-line-height: 20px;
-letter-spacing: -0.005em;
-cursor: pointer;
-padding-top: 10px;
-margin-left: -25px;
 `
 const ReportSvg = styled.svg`
 width: 18px;
@@ -67,24 +65,24 @@ width: 18px;
 margin-right: 5px;
 `
 const Logout = styled.p`
+margin: 0;
 font-family: Montserrat;
-padding-top: 50px;
+padding-top: 20px;
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: start;
+padding-left: 10%;
 font-weight: 700;
-font-size: 20px;
-line-height: 20px;
-letter-spacing: -0.005em;
-margin-top: calc(100% + 80px);
+margin-top: calc(100% + 50px);
 cursor: pointer;
+font-size: 20px;
 `
 const Links = styled(Link)`
 text-decoration:none;
 color: #000;
 `
 
-function SideBar() {
+function AgentSideBar() {
    
 
   let navigate = useNavigate();
@@ -95,7 +93,7 @@ function SideBar() {
   return (
     <div>
          <SideBarContainer>
-         <Links to='/dashboard'><Dashboard><DashboardSvg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zm0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zM13 4v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1z"/></DashboardSvg>Dashboard</Dashboard></Links>
+         <Links to='/agentdashboard'><Dashboard><DashboardSvg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zm0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zM13 4v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1z"/></DashboardSvg>Dashboard</Dashboard></Links>
          <Links to='/logs'> <Log>
           <LogSvg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48"><mask id="svgIDa"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M13 10h28v34H13z"/><path stroke="#fff" stroke-linecap="round" d="M35 10V4H8a1 1 0 0 0-1 1v33h6"/><path stroke="#000" stroke-linecap="round" d="M21 22h12m-12 8h12"/></g></mask><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#svgIDa)"/></LogSvg>
             Log
@@ -110,4 +108,4 @@ function SideBar() {
   )
 }
 
-export default SideBar
+export default AgentSideBar
